@@ -413,7 +413,7 @@ DLLEXTERN uint32_t MakeShortFormID(mod_t *ModID, const uint32_t ObjectID, const 
     @param CreateFlags Flags that determine how the record is created. These flags are given in ::createFlags.
     @returns A pointer to the created record, or `NULL` if an error was encountered.
 */
-DLLEXTERN record_t * CreateRecord(mod_t *ModID, const uint32_t RecordType, const FORMID RecordFormID, char * const RecordEditorID, record_t *ParentID, const uint32_t CreateFlags);
+DLLEXTERN record_t * CreateRecord(mod_t *ModID, const uint32_t RecordType, const cb_formid_t RecordFormID, char * const RecordEditorID, record_t *ParentID, const uint32_t CreateFlags);
 
 /**
     @brief Copy a record from one plugin into another.
@@ -425,7 +425,7 @@ DLLEXTERN record_t * CreateRecord(mod_t *ModID, const uint32_t RecordType, const
     @param CreateFlags Flags that determine how the record copy is created. These flags are given in ::createFlags.
     @returns A pointer to the record copy, or `NULL` if an error was encountered.
 */
-DLLEXTERN record_t * CopyRecord(record_t *RecordID, mod_t *DestModID, record_t *DestParentID, const FORMID DestRecordFormID, char * const DestRecordEditorID, const uint32_t CreateFlags);
+DLLEXTERN record_t * CopyRecord(record_t *RecordID, mod_t *DestModID, record_t *DestParentID, const cb_formid_t DestRecordFormID, char * const DestRecordEditorID, const uint32_t CreateFlags);
 
 /**
     @brief Unload a record from memory.
