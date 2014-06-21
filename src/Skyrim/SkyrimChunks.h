@@ -75,6 +75,21 @@ struct SKLVLOCOED
         bool operator !=(const SKLVLOCOED &other) const;
     };
 
+// CNTO/COED pair for NPC_ records
+struct SKCNTOCOED
+    {
+        ReqSubRecord<GENCNTO> CNTO;
+        OptSubRecord<GENCOED> COED;
+
+        bool IsGlobal() const;
+        bool IsRank() const;
+
+        void Write(FileWriter &writer);
+
+        bool operator ==(const SKCNTOCOED &other) const;
+        bool operator !=(const SKCNTOCOED &other) const;
+    };
+
 struct MODEL
     {
         StringRecord MODL;  // Model Filename
@@ -282,5 +297,49 @@ struct SKEffect
     bool operator !=(const SKEffect &other) const;
 };
 
+struct GENATTACK
+{
+	struct ATTACKDATA
+	{
+		
+        float damageMult;
+        float attackChance;
+        FORMID attackSpell;
+        uint32_t flags;
+        /*
+		0x01 - Ignore Weapon
+		0x02 - Bash Attack
+		0x04 - Power Attack
+		0x08 - Left Attack
+		0x10 - Rotating Attack
+        */
+
+        float attackAngle;
+        float strikeAngle;
+        float stagger;
+        FORMID attackType;
+        float knockdown;
+        float recoveryTime;
+        float fatigueMult;
+		
+	};
+    ReqSubRecord<ATTACKDATA> ATKD; // attack data
+	StringRecord ATKE; // attack event
+
+    bool operator ==(const GENATTACK &other) const;
+    bool operator !=(const GENATTACK &other) const;
+};
+
+struct GENPRKR
+{
+	FORMID  perk;
+	uint8_t   rank, unused1[3];
+
+	GENPRKR();
+	~GENPRKR();
+
+	bool operator ==(const GENPRKR &other) const;
+	bool operator !=(const GENPRKR &other) const;
+};
 
 } // namespace Sk

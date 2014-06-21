@@ -312,3 +312,7 @@ typedef Record ** RECORDIDARRAY;
 // fill in the fields.
 #define SIZE_CHECK(type, size) \
     SIZE_CHECK_MSG(type, size, #type " must be " #size " bytes")
+
+
+#define ACCEPT_ISLOADED(op, form) \
+     if (form ## .IsLoaded() ) { op ## .Accept( form ## .value ); }
